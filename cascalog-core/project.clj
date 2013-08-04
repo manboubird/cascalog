@@ -1,5 +1,7 @@
 (def cc-version (or (System/getenv "CASCALOG_CASCADING_VERSION") "2.1.6"))
-(defproject cascalog/cascalog-core "1.10.2"
+(def hadoop-core-version "2.0.0-mr1-cdh4.3.0")
+(def hadoop-common-version "2.0.0-cdh4.3.0")
+(defproject cascalog/cascalog-core "1.10.2-mr1-cdh4.3.0"
   :description "Cascalog core libraries."
   :url "http://www.cascalog.org"
   :license {:name "Eclipse Public License"
@@ -10,7 +12,8 @@
   :javac-options ["-target" "1.6" "-source" "1.6"]
   :source-paths ["src/clj"]
   :java-source-paths ["src/java"]
-  :repositories {"conjars" "http://conjars.org/repo/"}
+  :repositories {"conjars" "http://conjars.org/repo/"
+                 "cloudera-releases" "https://repository.cloudera.com/artifactory/cloudera-repos"}
   :plugins [[lein-deps-tree "0.1.2"]]
   :exclusions [log4j/log4j org.slf4j/slf4j-log4j12]
   :dependencies [[org.clojure/clojure "1.5.1"]
@@ -28,9 +31,12 @@
                  [org.clojure/math.combinatorics "0.0.4"]]
   :profiles {:1.3 {:dependencies [[org.clojure/clojure "1.3.0"]]}
              :1.4 {:dependencies [[org.clojure/clojure "1.4.0"]]}
-             :provided {:dependencies [[org.apache.hadoop/hadoop-core "1.1.2"]]}
+             :provided {:dependencies [[org.apache.hadoop/hadoop-core ~hadoop-core-version]
+                                       [org.apache.hadoop/hadoop-common ~hadoop-common-version]]}
              :dev {:resource-paths ["dev"]
                    :plugins [[lein-midje "3.0.0"]]
                    :dependencies
                    [[cascalog/midje-cascalog "1.10.2"]
-                    [org.apache.hadoop/hadoop-core "1.1.2" :exclusions [[org.slf4j/slf4j-log4j12] [log4j] [commons-codec] commons-logging]]]}})
+                    [org.apache.hadoop/hadoop-core ~hadoop-core-version :exclusions [[org.slf4j/slf4j-log4j12] [log4j] [commons-codec] commons-logging]]
+                    [org.apache.hadoop/hadoop-common ~hadoop-common-version]
+                    ]}})
