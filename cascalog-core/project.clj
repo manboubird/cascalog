@@ -36,7 +36,7 @@
              :dev {:resource-paths ["dev"]
                    :plugins [[lein-midje "3.0.0"]]
                    :dependencies
-                   [[cascalog/midje-cascalog "1.10.2"]
+                   [[cascalog/midje-cascalog "1.10.2-mr1-cdh4.3.0"]
                     [org.apache.hadoop/hadoop-core ~hadoop-core-version :exclusions [[org.slf4j/slf4j-log4j12] [log4j] [commons-codec] commons-logging]]
                     [org.apache.hadoop/hadoop-common ~hadoop-common-version]
                     ]}})
