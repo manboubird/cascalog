@@ -35,13 +35,16 @@
                  [com.twitter/carbonite "1.4.0"]
                  [com.twitter/maple "0.2.2"]
                  [jackknife "0.1.7"]
-                 [hadoop-util "0.3.0-2.0.0-mr1-cdh4.5.0"]]
+                 [hadoop-util "0.3.0"]
+                 [org.apache.hadoop/hadoop-core ~HADOOP-CDH-MR1-VERSION]
+                 [org.apache.hadoop/hadoop-common ~HADOOP-CDH-VERSION]
+                 ]
   :profiles {:1.3 {:dependencies [[org.clojure/clojure "1.3.0"]]}
              :1.4 {:dependencies [[org.clojure/clojure "1.4.0"]]}
              :1.5 {:dependencies [[org.clojure/clojure "1.5.1"]]}
-             :provided {:dependencies [[org.apache.hadoop/hadoop-core ~HADOOP-CDH-MR1-VERSION]
-                                       [org.apache.hadoop/hadoop-common ~HADOOP-CDH-VERSION]
-                                       ]}
+             ; :provided {:dependencies [[org.apache.hadoop/hadoop-core ~HADOOP-CDH-MR1-VERSION]
+             ;                           [org.apache.hadoop/hadoop-common ~HADOOP-CDH-VERSION]
+             ;                           ]}
              :dev {:resource-paths ["dev"]
                    :plugins [[lein-midje "3.1.3"]]
                    :dependencies
