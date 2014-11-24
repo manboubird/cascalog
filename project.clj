@@ -1,4 +1,5 @@
-(def VERSION (slurp "VERSION"))
+; (def VERSION (slurp "VERSION"))
+(def VERSION (str "2.1.1"))
 (def MODULES (-> "MODULES" slurp (.split "\n")))
 (def DEPENDENCIES (for [m MODULES] [(symbol (str "cascalog/" m)) VERSION]))
 
